@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+     <title>Attendance</title>
+     <!--
+
+Template 2098 Health
+
+http://www.tooplate.com/view/2098-health
+
+-->
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="">
+     <meta name="keywords" content="">
+     <meta name="author" content="Tooplate">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+     <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}">
+     <link rel="stylesheet" href="{{url_for('static',filename='css/font-awesome.min.css')}}">
+     <link rel="stylesheet" href="{{url_for('static',filename='css/animate.css')}}">
+     <link rel="stylesheet" href="{{url_for('static',filename='css/owl.carousel.css')}}">
+     <link rel="stylesheet" href="{{url_for('static',filename='css/owl.theme.default.min.css')}}">
+
+     <link rel="stylesheet" href="{{url_for('static',filename='css/tooplate-style.css')}}">
+
+</head>
+<style>
+     ul#menu li {
+       display:inline;
+     }
+     </style>
+<body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+
+     <!-- PRE LOADER -->
+     <!-- MENU -->
+     <section class="navbar navbar-default navbar-static-top" role="navigation">
+          <div class="container">
+
+               <div class="navbar-header">
+                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                    </button>
+
+                    <!-- lOGO TEXT HERE -->
+               </div>
+
+               <!-- MENU LINKS -->
+               <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                         
+                         <li><a href="{{ url_for('Registration')}}" class="smoothScroll">Registration</a></li>
+                         <li><a href="{{ url_for('Attendance')}}" class="smoothScroll">Face recognition</a></li>
+  
+                    </ul>
+               </div>
+
+          </div>
+     </section>
+     <section id="home" class="slider" data-stellar-background-ratio="0.5">
+          <div class="container">
+               <div class="row">
+
+                    <div class="owl-carousel owl-theme">
+
+                         <div class="item item-first">
+                            
+
+
+                   
+
+                         <div class="item item-third">
+                              <div class="caption">
+                                   <div class="col-md-offset-1 col-md-10">
+                                        <h3>Student Face Recognition</h3>
+                                        <a href="#news" class="section-btn btn btn-default btn-blue smoothScroll">Read
+                                             Stories</a>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+
+               </div>
+          </div>
+     </section>
+
+
+
+     <!-- MAKE AN APPOINTMENT -->
+     <section id="appointment" data-stellar-background-ratio="3">
+          <center>
+               <h2 id="displayDateTime"></h2>
+          </center>
+
+          <center>
+               <h2>Student Face Recognition</h2>
+          </center>
+
+          <div class="container">
+
+               <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                         <form id="appointment-form" role="form" method="post" action="{{url_for('analyze')}}">
+
+
+                              <!-- SECTION TITLE -->
+                              <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
+                                   <h2>New Registrations </h2>
+                              </div>
+
+                              <div class="wow fadeInUp" data-wow-delay="0.8s">
+
+
+
+
+                                   <div class="col-md-12 col-sm-12">
+                                        <label for="telephone">Enter ID</label>
+                                        <input type="text" class="form-control" id="weight" name="Enter_ID" required=''>
+
+                                   </div>
+
+
+                                   <div class="col-md-12 col-sm-12">
+                                        <label for="telephone">Enter Name</label>
+                                        <input type="text" class="form-control" id="neutropholis" name="name"
+                                             required=''>
+
+                                   </div>
+
+                                   <div class="col-md-12 col-sm-12">
+                                        <label for="telephone">Enter Email</label>
+                                        <input type="tel" class="form-control" id="lymphocytes" name="email"
+                                             required=''>
+
+                                   </div>
+
+
+
+                                   <button type="submit" class="form-control" id="cf-submit" value="Take_Images" name="submit">Take Images
+                                   </button>
+
+                         </form>
+
+                         <form id="appointment-form" role="form" method="post" action="{{url_for('analyze')}}">
+
+                              <button type="submit" class="form-control" id="cf-submit" value="Save_Profile" name="submit">Save Profile
+                              </button>
+
+                         </form>
+
+                    </div>
+
+
+               </div>
+
+
+               <div class="col-md-6 col-sm-6">
+                    <!-- CONTACT FORM HERE -->
+                    <form id="appointment-form" role="form" method="post" action="{{url_for('analyze')}}">
+
+                         <!-- SECTION TITLE -->
+                         <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
+                              <h2>Face Recognition</h2>
+                         </div>
+
+                         <div class="wow fadeInUp" data-wow-delay="0.8s">
+
+                              <button type="submit" class="form-control" id="cf-submit" value="Take_Attendance" name="submit">Take Attendance
+                              </button>
+
+                         </div>
+                    </form>
+                    <h3 style="color:black"> {{ res }} </h3>
+                    <h3 style="color:black"> {{ res1 }} </h3>
+
+
+               </div>
+
+
+
+
+
+          </div>
+
+          </div>
+     </section>
+
+     <script type="text/javascript">
+          var today = new Date();
+          var day = today.getDay();
+          var daylist = ["Sunday", "Monday", "Tuesday", "Wednesday ", "Thursday", "Friday", "Saturday"];
+          var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+          var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+          var dateTime = date + ' ' + time;
+
+          document.getElementById("displayDateTime").innerHTML = dateTime;
+
+     </script>
+
+
+     <!-- SCRIPTS -->
+     <script src="{{url_for('static',filename='js/jquery.js')}}"></script>
+     <script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+     <script src="{{url_for('static',filename='js/jquery.sticky.js')}}"></script>
+     <script src="{{url_for('static',filename='js/jquery.stellar.min.js')}}"></script>
+     <script src="{{url_for('static',filename='js/wow.min.js')}}"></script>
+     <script src="{{url_for('static',filename='js/smoothscroll.js')}}"></script>
+     <script src="{{url_for('static',filename='js/owl.carousel.min.js')}}"></script>
+     <script src="{{url_for('static',filename='js/custom.js')}}"></script>
+
+</body>
+
+</html>
